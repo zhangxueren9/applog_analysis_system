@@ -127,7 +127,7 @@ public class DataCleanMapper extends Mapper<LongWritable, Text, Text, NullWritab
         }
         
         header.put("userId",userId);
-        outKey = new Text(header.toJSONString());
+        outKey = new Text(JsonToStringUtils.JsonToString(header));
        if("android".equals(header.getString("os_name"))){
            mos.write(outKey,outValue,"android/android");
        }else if("ios".equals(header.getString("os_name"))){
